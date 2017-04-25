@@ -1,0 +1,1774 @@
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_virtual_network.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_storage_account.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_network.test: Creation complete[0m[0m
+[0m[1mazurerm_subnet.test: Creating...[0m
+  address_prefix:            "" => "10.0.2.0/24"
+  ip_configurations.#:       "" => "<computed>"
+  name:                      "" => "private_sub"
+  network_security_group_id: "" => "<computed>"
+  resource_group_name:       "" => "dbgroup"
+  route_table_id:            "" => "<computed>"
+  virtual_network_name:      "" => "db_network"[0m
+[0m[1mazurerm_subnet.test: Creation complete[0m[0m
+[0m[1mazurerm_network_interface.test: Creating...[0m
+  applied_dns_servers.#:                                                "" => "<computed>"
+  dns_servers.#:                                                        "" => "<computed>"
+  enable_ip_forwarding:                                                 "" => "false"
+  internal_dns_name_label:                                              "" => "<computed>"
+  internal_fqdn:                                                        "" => "<computed>"
+  ip_configuration.#:                                                   "" => "1"
+  ip_configuration.690345761.load_balancer_backend_address_pools_ids.#: "" => "<computed>"
+  ip_configuration.690345761.load_balancer_inbound_nat_rules_ids.#:     "" => "<computed>"
+  ip_configuration.690345761.name:                                      "" => "testconfiguration1"
+  ip_configuration.690345761.private_ip_address:                        "" => "<computed>"
+  ip_configuration.690345761.private_ip_address_allocation:             "" => "dynamic"
+  ip_configuration.690345761.public_ip_address_id:                      "" => "<computed>"
+  ip_configuration.690345761.subnet_id:                                 "" => "/subscriptions/65ea6ec6-cfef-4558-bccf-db7b6f4930ca/resourceGroups/dbgroup/providers/Microsoft.Network/virtualNetworks/db_network/subnets/private_sub"
+  location:                                                             "" => "westus"
+  mac_address:                                                          "" => "<computed>"
+  name:                                                                 "" => "dbinterface"
+  network_security_group_id:                                            "" => "<computed>"
+  private_ip_address:                                                   "" => "<computed>"
+  resource_group_name:                                                  "" => "dbgroup"
+  tags.%:                                                               "" => "<computed>"
+  virtual_machine_id:                                                   "" => "<computed>"[0m
+[0m[1mazurerm_network_interface.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_account.test: Still creating... (20s elapsed)[0m[0m
+[0m[1mazurerm_storage_account.test: Still creating... (30s elapsed)[0m[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_machine.test: Creating...[0m
+  availability_set_id:                                                "" => "<computed>"
+  delete_data_disks_on_termination:                                   "" => "false"
+  delete_os_disk_on_termination:                                      "" => "false"
+  license_type:                                                       "" => "<computed>"
+  location:                                                           "" => "westus"
+  name:                                                               "" => "testdb2"
+  network_interface_ids.#:                                            "" => "1"
+  network_interface_ids.3036758736:                                   "" => "/subscriptions/65ea6ec6-cfef-4558-bccf-db7b6f4930ca/resourceGroups/dbgroup/providers/Microsoft.Network/networkInterfaces/dbinterface"
+  os_profile.#:                                                       "" => "1"
+  os_profile.2176481032.admin_password:                               "" => "Password1234!"
+  os_profile.2176481032.admin_username:                               "" => "testadmin"
+  os_profile.2176481032.computer_name:                                "" => "testdb2"
+  os_profile.2176481032.custom_data:                                  "" => "<computed>"
+  os_profile_linux_config.#:                                          "" => "1"
+  os_profile_linux_config.2972667452.disable_password_authentication: "" => "false"
+  os_profile_linux_config.2972667452.ssh_keys.#:                      "" => "0"
+  resource_group_name:                                                "" => "dbgroup"
+  storage_image_reference.#:                                          "" => "1"
+  storage_image_reference.1807630748.offer:                           "" => "UbuntuServer"
+  storage_image_reference.1807630748.publisher:                       "" => "Canonical"
+  storage_image_reference.1807630748.sku:                             "" => "14.04.2-LTS"
+  storage_image_reference.1807630748.version:                         "" => "latest"
+  storage_os_disk.#:                                                  "" => "1"
+  storage_os_disk.3999874626.caching:                                 "" => "ReadWrite"
+  storage_os_disk.3999874626.create_option:                           "" => "FromImage"
+  storage_os_disk.3999874626.disk_size_gb:                            "" => ""
+  storage_os_disk.3999874626.image_uri:                               "" => ""
+  storage_os_disk.3999874626.name:                                    "" => "myosdisk1"
+  storage_os_disk.3999874626.os_type:                                 "" => ""
+  storage_os_disk.3999874626.vhd_uri:                                 "" => "https://tadakamalla.blob.core.windows.net/vhds/myosdisk1.vhd"
+  tags.%:                                                             "" => "1"
+  tags.environment:                                                   "" => "staging"
+  vm_size:                                                            "" => "Standard_A0"[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Creation complete[0m[0m
+[0m[1m[32m
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.[0m
+[0m
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `terraform show` command.
+
+State path: terraform.tfstate[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_virtual_network.test: Creation complete[0m[0m
+[0m[1mazurerm_subnet.test: Creating...[0m
+  address_prefix:            "" => "10.0.2.0/24"
+  ip_configurations.#:       "" => "<computed>"
+  name:                      "" => "private_sub"
+  network_security_group_id: "" => "<computed>"
+  resource_group_name:       "" => "dbgroup"
+  route_table_id:            "" => "<computed>"
+  virtual_network_name:      "" => "db_network"[0m
+[0m[1mazurerm_storage_account.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_subnet.test: Creation complete[0m[0m
+[0m[1mazurerm_network_interface.test: Creating...[0m
+  applied_dns_servers.#:                                                "" => "<computed>"
+  dns_servers.#:                                                        "" => "<computed>"
+  enable_ip_forwarding:                                                 "" => "false"
+  internal_dns_name_label:                                              "" => "<computed>"
+  internal_fqdn:                                                        "" => "<computed>"
+  ip_configuration.#:                                                   "" => "1"
+  ip_configuration.690345761.load_balancer_backend_address_pools_ids.#: "" => "<computed>"
+  ip_configuration.690345761.load_balancer_inbound_nat_rules_ids.#:     "" => "<computed>"
+  ip_configuration.690345761.name:                                      "" => "testconfiguration1"
+  ip_configuration.690345761.private_ip_address:                        "" => "<computed>"
+  ip_configuration.690345761.private_ip_address_allocation:             "" => "dynamic"
+  ip_configuration.690345761.public_ip_address_id:                      "" => "<computed>"
+  ip_configuration.690345761.subnet_id:                                 "" => "/subscriptions/65ea6ec6-cfef-4558-bccf-db7b6f4930ca/resourceGroups/dbgroup/providers/Microsoft.Network/virtualNetworks/db_network/subnets/private_sub"
+  location:                                                             "" => "westus"
+  mac_address:                                                          "" => "<computed>"
+  name:                                                                 "" => "dbinterface"
+  network_security_group_id:                                            "" => "<computed>"
+  private_ip_address:                                                   "" => "<computed>"
+  resource_group_name:                                                  "" => "dbgroup"
+  tags.%:                                                               "" => "<computed>"
+  virtual_machine_id:                                                   "" => "<computed>"[0m
+[0m[1mazurerm_network_interface.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_account.test: Still creating... (20s elapsed)[0m[0m
+[0m[1mazurerm_storage_account.test: Still creating... (30s elapsed)[0m[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_machine.test: Creating...[0m
+  availability_set_id:                                                "" => "<computed>"
+  delete_data_disks_on_termination:                                   "" => "false"
+  delete_os_disk_on_termination:                                      "" => "false"
+  license_type:                                                       "" => "<computed>"
+  location:                                                           "" => "westus"
+  name:                                                               "" => "testdb2"
+  network_interface_ids.#:                                            "" => "1"
+  network_interface_ids.3036758736:                                   "" => "/subscriptions/65ea6ec6-cfef-4558-bccf-db7b6f4930ca/resourceGroups/dbgroup/providers/Microsoft.Network/networkInterfaces/dbinterface"
+  os_profile.#:                                                       "" => "1"
+  os_profile.2176481032.admin_password:                               "" => "Password1234!"
+  os_profile.2176481032.admin_username:                               "" => "testadmin"
+  os_profile.2176481032.computer_name:                                "" => "testdb2"
+  os_profile.2176481032.custom_data:                                  "" => "<computed>"
+  os_profile_linux_config.#:                                          "" => "1"
+  os_profile_linux_config.2972667452.disable_password_authentication: "" => "false"
+  os_profile_linux_config.2972667452.ssh_keys.#:                      "" => "0"
+  resource_group_name:                                                "" => "dbgroup"
+  storage_image_reference.#:                                          "" => "1"
+  storage_image_reference.1807630748.offer:                           "" => "UbuntuServer"
+  storage_image_reference.1807630748.publisher:                       "" => "Canonical"
+  storage_image_reference.1807630748.sku:                             "" => "14.04.2-LTS"
+  storage_image_reference.1807630748.version:                         "" => "latest"
+  storage_os_disk.#:                                                  "" => "1"
+  storage_os_disk.3999874626.caching:                                 "" => "ReadWrite"
+  storage_os_disk.3999874626.create_option:                           "" => "FromImage"
+  storage_os_disk.3999874626.disk_size_gb:                            "" => ""
+  storage_os_disk.3999874626.image_uri:                               "" => ""
+  storage_os_disk.3999874626.name:                                    "" => "myosdisk1"
+  storage_os_disk.3999874626.os_type:                                 "" => ""
+  storage_os_disk.3999874626.vhd_uri:                                 "" => "https://tadakamalla.blob.core.windows.net/vhds/myosdisk1.vhd"
+  tags.%:                                                             "" => "1"
+  tags.environment:                                                   "" => "staging"
+  vm_size:                                                            "" => "Standard_A0"[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (1m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (2m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (3m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (4m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (5m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (6m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (7m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (8m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m10s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m20s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m30s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m40s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (9m50s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Still creating... (10m0s elapsed)[0m[0m
+[0m[1mazurerm_virtual_machine.test: Creation complete[0m[0m
+[0m[1m[32m
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.[0m
+[0m
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `terraform show` command.
+
+State path: terraform.tfstate[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+[0m[1mazurerm_resource_group.test: Creating...[0m
+  location: "" => "westus"
+  name:     "" => "dbgroup"
+  tags.%:   "" => "<computed>"[0m
+[0m[1mazurerm_resource_group.test: Creation complete[0m[0m
+[0m[1mazurerm_virtual_network.test: Creating...[0m
+  address_space.#:     "" => "1"
+  address_space.0:     "" => "10.0.0.0/16"
+  location:            "" => "westus"
+  name:                "" => "db_network"
+  resource_group_name: "" => "dbgroup"
+  subnet.#:            "" => "<computed>"
+  tags.%:              "" => "<computed>"[0m
+[0m[1mazurerm_storage_account.test: Creating...[0m
+  access_tier:              "" => "<computed>"
+  account_kind:             "" => "Storage"
+  account_type:             "" => "Standard_LRS"
+  location:                 "" => "westus"
+  name:                     "" => "tadakamalla"
+  primary_access_key:       "" => "<computed>"
+  primary_blob_endpoint:    "" => "<computed>"
+  primary_file_endpoint:    "" => "<computed>"
+  primary_location:         "" => "<computed>"
+  primary_queue_endpoint:   "" => "<computed>"
+  primary_table_endpoint:   "" => "<computed>"
+  resource_group_name:      "" => "dbgroup"
+  secondary_access_key:     "" => "<computed>"
+  secondary_blob_endpoint:  "" => "<computed>"
+  secondary_location:       "" => "<computed>"
+  secondary_queue_endpoint: "" => "<computed>"
+  secondary_table_endpoint: "" => "<computed>"
+  tags.%:                   "" => "1"
+  tags.environment:         "" => "staging"[0m
+[0m[1mazurerm_storage_account.test: Creation complete[0m[0m
+[0m[1mazurerm_storage_container.test: Creating...[0m
+  container_access_type: "" => "private"
+  name:                  "" => "vhds"
+  properties.%:          "" => "<computed>"
+  resource_group_name:   "" => "dbgroup"
+  storage_account_name:  "" => "tadakamalla"[0m
+[0m[1mazurerm_storage_container.test: Creation complete[0m[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but
+will not be persisted to local or remote state storage.
+
+
+The Terraform execution plan has been generated and is shown below.
+Resources are shown in alphabetical order for quick scanning. Green resources
+will be created (or destroyed and then created if an existing resource
+exists), yellow resources are being changed in-place, and red resources
+will be destroyed. Cyan entries are data sources to be read.
+
+Your plan was also saved to the path below. Call the "apply" subcommand
+with this plan file and Terraform will exactly execute this execution
+plan.
+
+Path: testdb2.plan
+
+[32m+ azurerm_network_interface.test
+[0m    applied_dns_servers.#:                                                  "<computed>"
+    dns_servers.#:                                                          "<computed>"
+    enable_ip_forwarding:                                                   "false"
+    internal_dns_name_label:                                                "<computed>"
+    internal_fqdn:                                                          "<computed>"
+    ip_configuration.#:                                                     "1"
+    ip_configuration.~3868576482.load_balancer_backend_address_pools_ids.#: "<computed>"
+    ip_configuration.~3868576482.load_balancer_inbound_nat_rules_ids.#:     "<computed>"
+    ip_configuration.~3868576482.name:                                      "testconfiguration1"
+    ip_configuration.~3868576482.private_ip_address:                        "<computed>"
+    ip_configuration.~3868576482.private_ip_address_allocation:             "dynamic"
+    ip_configuration.~3868576482.public_ip_address_id:                      "<computed>"
+    ip_configuration.~3868576482.subnet_id:                                 "${azurerm_subnet.test.id}"
+    location:                                                               "westus"
+    mac_address:                                                            "<computed>"
+    name:                                                                   "dbinterface"
+    network_security_group_id:                                              "<computed>"
+    private_ip_address:                                                     "<computed>"
+    resource_group_name:                                                    "dbgroup"
+    tags.%:                                                                 "<computed>"
+    virtual_machine_id:                                                     "<computed>"
+[0m
+[0m[32m+ azurerm_resource_group.test
+[0m    location: "westus"
+    name:     "dbgroup"
+    tags.%:   "<computed>"
+[0m
+[0m[32m+ azurerm_storage_account.test
+[0m    access_tier:              "<computed>"
+    account_kind:             "Storage"
+    account_type:             "Standard_LRS"
+    location:                 "westus"
+    name:                     "tadakamalla"
+    primary_access_key:       "<computed>"
+    primary_blob_endpoint:    "<computed>"
+    primary_file_endpoint:    "<computed>"
+    primary_location:         "<computed>"
+    primary_queue_endpoint:   "<computed>"
+    primary_table_endpoint:   "<computed>"
+    resource_group_name:      "dbgroup"
+    secondary_access_key:     "<computed>"
+    secondary_blob_endpoint:  "<computed>"
+    secondary_location:       "<computed>"
+    secondary_queue_endpoint: "<computed>"
+    secondary_table_endpoint: "<computed>"
+    tags.%:                   "1"
+    tags.environment:         "staging"
+[0m
+[0m[32m+ azurerm_storage_container.test
+[0m    container_access_type: "private"
+    name:                  "vhds"
+    properties.%:          "<computed>"
+    resource_group_name:   "dbgroup"
+    storage_account_name:  "tadakamalla"
+[0m
+[0m[32m+ azurerm_subnet.test
+[0m    address_prefix:            "10.0.2.0/24"
+    ip_configurations.#:       "<computed>"
+    name:                      "private_sub"
+    network_security_group_id: "<computed>"
+    resource_group_name:       "dbgroup"
+    route_table_id:            "<computed>"
+    virtual_network_name:      "db_network"
+[0m
+[0m[32m+ azurerm_virtual_machine.test
+[0m    availability_set_id:                                                "<computed>"
+    delete_data_disks_on_termination:                                   "false"
+    delete_os_disk_on_termination:                                      "false"
+    license_type:                                                       "<computed>"
+    location:                                                           "westus"
+    name:                                                               "testdb2"
+    network_interface_ids.#:                                            "<computed>"
+    os_profile.#:                                                       "1"
+    os_profile.2176481032.admin_password:                               "Password1234!"
+    os_profile.2176481032.admin_username:                               "testadmin"
+    os_profile.2176481032.computer_name:                                "testdb2"
+    os_profile.2176481032.custom_data:                                  "<computed>"
+    os_profile_linux_config.#:                                          "1"
+    os_profile_linux_config.2972667452.disable_password_authentication: "false"
+    os_profile_linux_config.2972667452.ssh_keys.#:                      "0"
+    resource_group_name:                                                "dbgroup"
+    storage_image_reference.#:                                          "1"
+    storage_image_reference.1807630748.offer:                           "UbuntuServer"
+    storage_image_reference.1807630748.publisher:                       "Canonical"
+    storage_image_reference.1807630748.sku:                             "14.04.2-LTS"
+    storage_image_reference.1807630748.version:                         "latest"
+    storage_os_disk.#:                                                  "1"
+    storage_os_disk.~808156298.caching:                                 "ReadWrite"
+    storage_os_disk.~808156298.create_option:                           "FromImage"
+    storage_os_disk.~808156298.disk_size_gb:                            ""
+    storage_os_disk.~808156298.image_uri:                               ""
+    storage_os_disk.~808156298.name:                                    "myosdisk1"
+    storage_os_disk.~808156298.os_type:                                 ""
+    storage_os_disk.~808156298.vhd_uri:                                 "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}/myosdisk1.vhd"
+    tags.%:                                                             "1"
+    tags.environment:                                                   "staging"
+    vm_size:                                                            "Standard_A0"
+[0m
+[0m[32m+ azurerm_virtual_network.test
+[0m    address_space.#:     "1"
+    address_space.0:     "10.0.0.0/16"
+    location:            "westus"
+    name:                "db_network"
+    resource_group_name: "dbgroup"
+    subnet.#:            "<computed>"
+    tags.%:              "<computed>"
+[0m
+[0m
+[0m[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.[0m

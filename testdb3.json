@@ -1,0 +1,13 @@
+
+{
+      "target":"aws",
+      "action":"provision",
+      "access_key":"AKIAJIIA46RTGJTMWY6Q",
+      "secret_key":"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",
+      "ami":"ami-c737a5a7",
+      "region":"us-west-2",
+      "key_name":"testdb3_key",
+      "name":"testdb3_Us-West",
+      "instance_type":"t1.micro"
+      
+      }
